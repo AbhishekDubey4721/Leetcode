@@ -1,0 +1,47 @@
+import java.util.Scanner;
+import java.util.*;
+public class Main
+{
+    public static HashMap<String,Integer> sort(HashMap<String,Integer> hm)
+    {
+        List<Map.Entry<String, Integer> > list = new LinkedList<Map.Entry<String, Integer> >(hm.entrySet()); 
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer> >() { 
+            public int compare(Map.Entry<String, Integer> o1,  Map.Entry<String, Integer> o2) 
+            { 
+                return (o1.getValue()).compareTo(o2.getValue()); 
+            } 
+        }); 
+        HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>(); 
+        for (Map.Entry<String, Integer> aa : list) { 
+            temp.put(aa.getKey(), aa.getValue()); 
+        } 
+        return temp; 
+    }
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        String customers[] = new String[n];
+        for (int i=0; i<n; i++)
+        {  customers[i] = sc.next();  }
+        HashMap<String,Integer> map = new HashMap<>();
+        for (String s: customers)
+        {
+            if (map.containsKey(s))
+            {
+                int a = map.get(s);
+                map.put(s,++a);
+            }
+            else
+            { map.put(s,1); }
+        }
+        map = sort(map);
+        List<String> l1 = new ArrayList<String>();
+        for (String s: map.keySet())
+        {
+            l1.add(s);
+        }
+        Collections.reverse(l1);
+        System.out.println(l1);
+    }
+}
