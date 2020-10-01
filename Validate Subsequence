@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.util.*;
+public class ValidateSubsequence{
+
+     public static void main(String []args){
+        
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for (int i=0; i<n; i++)
+        { arr[i] = sc.nextInt(); } 
+        int k = sc.nextInt();
+        int subsequence[] = new int[k];
+        for (int i=0; i<k; i++)
+        { subsequence[i] = sc.nextInt(); } 
+        
+        int arrindex=0; int subsequenceindex=0;
+        while (arrindex < n && subsequenceindex < k)
+        {
+            if (arr[arrindex]==subsequence[subsequenceindex])
+            { arrindex++; subsequenceindex++; }
+            else{ arrindex++; }
+        }
+        if (subsequenceindex == k)
+        { System.out.println(true); }
+        else{ System.out.println(false); } 
+        
+     }
+}
