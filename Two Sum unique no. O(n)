@@ -1,0 +1,32 @@
+import java.util.Scanner;
+import java.util.*;
+public class Main{
+
+     public static void main(String []args){
+        
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for (int i=0; i<n; i++)
+        { arr[i] = sc.nextInt(); } 
+        int target = sc.nextInt();
+        
+        HashMap<Integer,Boolean> map = new HashMap<>();
+        for (int i: arr)
+        {
+            if (map.containsKey(target-i))
+            {
+                boolean b = map.get(target-i);
+                if (b==true)
+                {
+                    System.out.println("("+i+","+(target-i)+")");
+                    map.put(target-i,false);
+                    map.put(i,false);
+                }
+            }
+            else{
+                map.put(i,true); 
+            }
+        }
+     }
+}
